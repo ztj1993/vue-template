@@ -1,4 +1,20 @@
-//TODO: 动态引入 entry
+let glob = require('glob');
+let path = require('path');
+let entries = glob.sync('src/entries/*.js');
+let pages = {
+    "index": {
+        entry: 'src/entries/app.js',
+    },
+};
+
+entries.forEach(function (entry) {
+    let name = path.basename(entry, '.js');
+    if (name[0] === '_') return;
+    pages[name] = {
+        entry: entry,
+        inlineSource: '(.css|.js)',
+    }
+});
 
 module.exports = {
     chainWebpack: config => {
@@ -14,19 +30,11 @@ module.exports = {
             .use(require('html-webpack-inline-source-plugin'));
 
         //TODO: 动态处理 (动态引入 entry)
-        config.plugins.delete('prefetch-app');
-        config.plugins.delete('preload-app');
-        config.plugins.delete('prefetch-home');
-        config.plugins.delete('preload-home');
+        Object.keys(pages).forEach(function (page) {
+            if (page === 'index') return;
+            config.plugins.delete('prefetch-' + page);
+            config.plugins.delete('preload-' + page);
+        });
     },
-    pages: {
-        //TODO:: 动态处理 (动态引入 entry)
-        "index": {
-            entry: 'src/entries/app.js',
-        },
-        "home": {
-            entry: 'src/entries/home.js',
-            inlineSource: '(.css|.js)',
-        },
-    }
+    pages: pages,
 };
