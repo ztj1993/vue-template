@@ -17,6 +17,16 @@ entries.forEach(function (entry) {
 });
 
 module.exports = {
+    devServer: {
+        proxy: {
+            '/base': {
+                target: process.env.PROXY_TARGET_BASE,
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {'^/base': ''},
+            }
+        }
+    },
     chainWebpack: config => {
         config.module
             .rule('images')
