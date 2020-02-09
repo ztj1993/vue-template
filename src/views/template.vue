@@ -26,5 +26,9 @@
                 },
             }
         },
+        mounted: function () {
+            this.$nextTick(function () {
+            });
+        },
     }
 </script>
