@@ -23,6 +23,7 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "html-webpack-inline-source-plugin": "^0.0.10",
+    "mockjs": "^1.1.0",
     "node-sass": "^4.13.1",
     "postcss-aspect-ratio-mini": "^1.0.1",
     "postcss-plugin-px2rem": "^0.8.1",
