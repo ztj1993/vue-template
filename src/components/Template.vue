@@ -1,8 +1,8 @@
 <template>
     <div class="template-component">
         <div class="title">标题：{{title}}</div>
-        <div class="author">作者：{{intro.author}}</div>
-        <div class="favorite">收藏：{{intro.favorite}}</div>
+        <div class="author">作者：{{author}}</div>
+        <div class="favorite">收藏：{{favorite}}</div>
     </div>
 </template>
 
@@ -24,11 +24,28 @@
             },
             intro: Object,
         },
+        data() {
+            return {
+                author: null,
+                favorite: null,
+            }
+        },
         watch: {
             title: function (val, old) {
                 this.log('--- component template watch: title ---');
                 this.log('new: ' + val);
                 this.log('old: ' + old);
+            },
+            intro: {
+                handler: function (val, old) {
+                    this.log('--- component template watch: intro ---');
+                    this.log(val);
+                    this.log(old);
+
+                    this.author = ('author' in val) ? val.author : '未知';
+                    this.favorite = ('favorite' in val) ? val.favorite : '未知';
+                },
+                immediate: true,
             },
         },
         created() {
