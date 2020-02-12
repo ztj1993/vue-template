@@ -39,7 +39,6 @@ module.exports = {
         config.plugin('inline-source')
             .use(require('html-webpack-inline-source-plugin'));
 
-        //TODO: 动态处理 (动态引入 entry)
         Object.keys(pages).forEach(function (page) {
             if (page === 'index') return;
             config.plugins.delete('prefetch-' + page);
