@@ -26,7 +26,9 @@
         },
         watch: {
             title: function (val, oldVal) {
-                window.console.log('new: %s, old: %s', val, oldVal)
+                this.log('--- component template watch: title ---');
+                this.log('new: ' + val);
+                this.log('old: ' + oldVal);
             },
         },
         created() {
