@@ -10,6 +10,10 @@
     export default {
         name: "Template",
         props: {
+            debug: {
+                type: Boolean,
+                default: true,
+            },
             title: {
                 type: String,
                 default: 'Title',
@@ -26,6 +30,11 @@
             },
         },
         methods: {
+            log(msg) {
+                if (this.debug) {
+                    window.console.log(msg);
+                }
+            },
             testing() {
                 window.console.log('--- testing ---');
             }
