@@ -36,7 +36,7 @@
                 }
             },
             testing() {
-                window.console.log('--- testing ---');
+                this.log('--- component template method: testing ---');
             },
         },
     }
