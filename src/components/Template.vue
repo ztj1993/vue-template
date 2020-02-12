@@ -29,6 +29,15 @@
                 window.console.log('new: %s, old: %s', val, oldVal)
             },
         },
+        created() {
+            this.log('--- component template created ---');
+        },
+        mounted: function () {
+            this.log('--- component template mounted ---');
+            this.$nextTick(function () {
+                this.log('--- component template mounted: $nextTick ---');
+            });
+        },
         methods: {
             log(msg) {
                 if (this.debug) {
