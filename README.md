@@ -16,11 +16,6 @@
 - 动态入口
 - 动态路由
 
-## TODO
-- 动态入口
-- 动态路由
-- 环境变量
-
 ## Project setup
 ```
 yarn install
