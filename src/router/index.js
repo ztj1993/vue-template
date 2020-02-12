@@ -16,6 +16,15 @@ const routes = [
     }
 ];
 
+let pages = require.context('../pages', true, /.vue$/);
+pages.keys().map(key => {
+    let name = key.replace(/(\.\/|\.vue)/g, '');
+    routes.push({
+        path: '/page/' + name,
+        component: pages(key).default
+    })
+});
+
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
