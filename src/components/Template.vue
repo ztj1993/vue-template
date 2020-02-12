@@ -37,7 +37,7 @@
             },
             testing() {
                 window.console.log('--- testing ---');
-            }
+            },
         },
     }
 </script>
