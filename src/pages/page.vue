@@ -3,11 +3,11 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        name: 'Page',
+    }
 </script>
 
-<style lang="scss" scoped>
-    div {
-        color: red;
-    }
+<style lang="scss">
+
 </style>
