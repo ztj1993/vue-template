@@ -1,12 +1,13 @@
 let glob = require('glob');
 let path = require('path');
-let entries = glob.sync('src/entries/*.js');
+let entries = [];
 let pages = {
     "index": {
         entry: 'src/entries/app.js',
     },
 };
 
+entries = glob.sync('src/entries/*.js');
 entries.forEach(function (entry) {
     let name = path.basename(entry, '.js');
     if (name[0] === '_') return;
