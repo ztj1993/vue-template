@@ -6,6 +6,11 @@ if (process.env.NODE_ENV === 'development') {
     files.keys().map(key => {
         modules.push(files(key).default)
     });
+
+    files = require.context('../single', true, /\.\/([\w|-]+?)\/dev.js$/);
+    files.keys().map(key => {
+        modules.push(files(key).default)
+    });
 }
 
 export default modules;
