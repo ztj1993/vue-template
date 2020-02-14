@@ -11,6 +11,7 @@ entries = glob.sync('src/entries/*.js');
 entries.forEach(function (entry) {
     let name = path.basename(entry, '.js');
     if (name[0] === '_') return;
+    name = 'html-page/' + name;
     pages[name] = {
         entry: entry,
         inlineSource: '(.css|.js)',
@@ -20,7 +21,7 @@ entries.forEach(function (entry) {
 entries = glob.sync('src/single/*/entry.js');
 entries.forEach(function (entry) {
     let name = entry.replace(/(src\/single\/|\/entry\.js)/g, '');
-    name = 'single/' + name;
+    name = 'html-single/' + name;
     pages[name] = {
         entry: entry,
         inlineSource: '(.css|.js)',
