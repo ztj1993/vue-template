@@ -1,5 +1,5 @@
 export default [{
-    path: '/sample',
+    path: '/',
     name: 'Sample',
     component: () => import('../views/sample.vue')
 }];
