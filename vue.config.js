@@ -16,6 +16,16 @@ entries.forEach(function (entry) {
     }
 });
 
+entries = glob.sync('src/single/*/entry.js');
+entries.forEach(function (entry) {
+    let name = entry.replace(/(src\/single\/|\/entry\.js)/g, '');
+    name = 'single/' + name;
+    pages[name] = {
+        entry: entry,
+        inlineSource: '(.css|.js)',
+    }
+});
+
 let proxy = {};
 let proxy_target = process.env.PROXY_TARGET;
 let proxy_prefix = process.env.PROXY_PREFIX;

@@ -19,6 +19,15 @@ pages.keys().map(key => {
     })
 });
 
+files = require.context('../single', true, /\.\/([\w|-]+?)\/index.vue$/);
+files.keys().map(key => {
+    let name = key.replace(/(\.\/|\/index\.vue)/g, '');
+    routes.push({
+        path: '/single/' + name,
+        component: files(key).default
+    })
+});
+
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
