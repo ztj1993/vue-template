@@ -3,18 +3,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter);
 
-const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: () => import('../views/home.vue')
-    },
-    {
-        path: '/tpl',
-        name: 'Template',
-        component: () => import('../views/template.vue')
-    }
-];
+const routes = [];
 
 let pages = require.context('../pages', true, /.vue$/);
 pages.keys().map(key => {
