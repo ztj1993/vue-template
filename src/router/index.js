@@ -5,6 +5,11 @@ Vue.use(VueRouter);
 
 const routes = [];
 
+let files = require.context('./', false, /.router.js$/);
+files.keys().map(key => {
+    routes.push(...files(key).default);
+});
+
 let pages = require.context('../pages', true, /.vue$/);
 pages.keys().map(key => {
     let name = key.replace(/(\.\/|\.vue)/g, '');
