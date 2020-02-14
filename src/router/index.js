@@ -1,21 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+let files = null;
+let routes = [];
+
 Vue.use(VueRouter);
 
-const routes = [];
-
-let files = require.context('./', false, /.router.js$/);
+files = require.context('./', false, /.router.js$/);
 files.keys().map(key => {
     routes.push(...files(key).default);
 });
 
-let pages = require.context('../pages', true, /.vue$/);
-pages.keys().map(key => {
+files = require.context('../pages', true, /.vue$/);
+files.keys().map(key => {
     let name = key.replace(/(\.\/|\.vue)/g, '');
     routes.push({
         path: '/page/' + name,
-        component: pages(key).default
+        component: files(key).default
     })
 });
 
