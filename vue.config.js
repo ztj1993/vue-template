@@ -45,6 +45,7 @@ if (proxy_target !== '' && proxy_prefix !== '') {
 }
 
 module.exports = {
+    productionSourceMap: false,
     devServer: {
         proxy: proxy,
     },
