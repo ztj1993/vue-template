@@ -1,0 +1,17 @@
+.dev {
+  .layout.block {
+    background-color: red;
+
+    .layout.block {
+      background-color: green;
+
+      .layout.block {
+        background-color: black;
+
+        .layout.block {
+          background-color: white;
+        }
+      }
+    }
+  }
+}
