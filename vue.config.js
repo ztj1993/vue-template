@@ -1,3 +1,4 @@
+const build = require('./modules/build');
 let glob = require('glob');
 let path = require('path');
 let entries = [];
@@ -48,6 +49,10 @@ module.exports = {
         proxy: proxy,
     },
     chainWebpack: config => {
+        config.plugin().use(require.resolve('webpack/lib/ProvidePlugin'), [{
+            ...build.get_definitions_configure(),
+        }]);
+
         config.module
             .rule('images')
             .use('url-loader')
