@@ -1,14 +1,6 @@
-let files = require.context('./', false, /.util./);
-
-let modules = [];
+let files = require.context('./', false, /[scss|js]$/);
 
 files.keys().map(key => {
-    modules.push(files(key).default)
+    if(key === './index.js') return;
+    files(key)
 });
-
-files = require.context('../single/utils', false, /.util./);
-files.keys().map(key => {
-    modules.push(files(key).default)
-});
-
-export default modules;
