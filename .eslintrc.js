@@ -1,10 +1,10 @@
 const glob = require('glob');
 const path = require('path');
 const globals = {};
-const definitions = glob.sync('src/definitions/*.js');
+const definitions = glob.sync('src/**/*.definition.js');
 
-definitions.forEach(function (entry) {
-    let name = path.basename(entry, '.js');
+definitions.forEach(function (file) {
+    const name = path.basename(file).replace('.definition.js', '');
     globals[name] = true;
 });
 
