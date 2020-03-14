@@ -103,7 +103,7 @@ function get_proxy_configure() {
         };
     }
 
-    return proxy;
+    return {proxy: proxy};
 }
 
 function get_definitions_configure() {
