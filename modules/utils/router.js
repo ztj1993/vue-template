@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import RouterPlugin from '../../modules/vue/router';
+import RouterPlugin from '../vue/router';
 
 let files = null;
 let routes = [];
