@@ -14,6 +14,8 @@ module.exports = {
         build.configure_definitions(config);
         // 单 HTML 内联样式和脚本配置
         build.configure_single_html(config, options);
+        // 单 JS 文件
+        build.configure_single_js(config);
     },
     ...options,
 };

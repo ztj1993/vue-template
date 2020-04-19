@@ -1,6 +1,12 @@
 const glob = require('glob');
 const path = require('path');
 
+function configure_single_js(config) {
+    if (process.env.SINGLE_JS_ENABLE !== 'true') return {};
+
+    config.optimization.splitChunks(false);
+}
+
 function configure_single_html(config, options) {
     if (process.env.SINGLE_HTML_ENABLE !== 'true') return {};
 
@@ -86,4 +92,5 @@ module.exports = {
     get_pages_configure,
     get_proxy_configure,
     configure_definitions,
+    configure_single_js,
 };
