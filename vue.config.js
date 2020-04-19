@@ -9,10 +9,8 @@ module.exports = {
         ...build.get_proxy_configure(),
     },
     chainWebpack: config => {
-        config.plugin().use(require.resolve('webpack/lib/ProvidePlugin'), [{
-            ...build.get_definitions_configure(),
-        }]);
-
+        // 全局定义配置
+        build.configure_definitions(config);
         // 单 HTML 内联样式和脚本配置
         build.configure_single_html(config, options);
     },

@@ -12,12 +12,11 @@
 
 ## 项目功能
 - vue, vue-router, vuex, sass
-- [vue pages](./docs/usage/vue-pages.md)
+- [vue pages/multiple entry/多页面多入口功能](./docs/usage/multiple-entry.md)
 - [px to viewport](./docs/usage/px-to-viewport.md)
 - [px to rem](./docs/usage/px-to-rem.md)
 - [单 HTML 文件打包](./docs/usage/single-html.md)
-- [多入口文件](./docs/usage/multiple-entry.md)
-- [多路由文件](./docs/usage/multiple-router.md)
+- [multiple router/多路由文件功能](./docs/usage/multiple-router.md)
 - [全局插件并配置 eslint](./docs/usage/global-plugin.md)
 
 ## Project setup

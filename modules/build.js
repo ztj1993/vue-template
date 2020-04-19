@@ -36,53 +36,15 @@ function configure_single_html(config, options) {
 function get_pages_configure() {
     if (process.env.PAGES_ENABLE !== 'true') return {};
 
-    const pages = {
-        ...get_index_entry(),
-        ...get_page_entries(),
-        ...get_single_entries(),
-    };
+    const entries = glob.sync('src/**/page.options.js');
+
+    let pages = {};
+    entries.forEach(function (entry) {
+        const page = path.join(process.env.INIT_CWD, entry);
+        pages = Object.assign(pages, require(page));
+    });
 
     return {pages: pages};
-}
-
-function get_index_entry() {
-    return {
-        "index": {
-            entry: 'src/main.js',
-        },
-    }
-}
-
-function get_page_entries() {
-    const pages = {};
-    const entries = glob.sync('src/entries/*.js');
-
-    entries.forEach(function (entry) {
-        let name = path.basename(entry, '.js');
-        if (name[0] === '_') return;
-        name = 'html-page/' + name;
-        pages[name] = {
-            entry: entry,
-        }
-    });
-
-    return pages;
-}
-
-function get_single_entries() {
-    const pages = {};
-    const entries = glob.sync('src/single/*/entry.js');
-
-    entries.forEach(function (entry) {
-        let name = entry.replace('/entry.js', '').replace(/(.+?)\//g, '');
-        name = 'html-single/' + name;
-        pages[name] = {
-            entry: entry,
-            inlineSource: '(.css|.js)',
-        }
-    });
-
-    return pages;
 }
 
 function get_proxy_configure() {
@@ -103,24 +65,26 @@ function get_proxy_configure() {
         };
     }
 
-    return proxy;
+    return {proxy: proxy};
 }
 
-function get_definitions_configure() {
+function configure_definitions(config) {
     const options = {};
-    const files = glob.sync('src/definitions/*.js');
+    const files = glob.sync('src/**/*.definition.js');
 
     files.forEach(function (file) {
-        let name = path.basename(file, '.js');
+        const name = path.basename(file).replace('.definition.js', '');
         options[name] = require.resolve('../' + file);
     });
 
-    return options;
+    config.plugin().use(require.resolve('webpack/lib/ProvidePlugin'), [{
+        ...options,
+    }]);
 }
 
 module.exports = {
     configure_single_html,
     get_pages_configure,
     get_proxy_configure,
-    get_definitions_configure,
+    configure_definitions,
 };

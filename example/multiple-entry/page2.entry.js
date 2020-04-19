@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import App from '../pages/sample.vue'
-
-import '../utils'
+import App from './page2.vue'
 
 Vue.config.productionTip = false;
 
-new Vue({
+let app = new Vue({
     render: h => h(App),
 }).$mount('#app');
+
+window.app = app;
