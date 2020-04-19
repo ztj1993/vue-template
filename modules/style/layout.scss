@@ -1,9 +1,12 @@
-.development {
+.layout.block {
+  background-color: red;
+  opacity: 0.6;
+
   .layout.block {
-    background-color: red;
+    background-color: green;
 
     .layout.block {
-      background-color: green;
+      background-color: orange;
 
       .layout.block {
         background-color: black;
