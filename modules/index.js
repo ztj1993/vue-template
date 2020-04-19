@@ -7,6 +7,16 @@ function configure_single_js(config) {
     config.optimization.splitChunks(false);
 }
 
+function configure_data_uri(config) {
+    if (process.env.DATA_URI_ENABLE !== 'true') return {};
+
+    config.module
+        .rule('images')
+        .use('url-loader')
+        .loader('url-loader')
+        .tap(options => Object.assign(options, {limit: 102400}));
+}
+
 function configure_single_html(config, options) {
     if (process.env.SINGLE_HTML_ENABLE !== 'true') return {};
 
@@ -93,4 +103,5 @@ module.exports = {
     get_proxy_configure,
     configure_definitions,
     configure_single_js,
+    configure_data_uri,
 };

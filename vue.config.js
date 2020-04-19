@@ -16,6 +16,8 @@ module.exports = {
         build.configure_single_html(config, options);
         // 单 JS 文件
         build.configure_single_js(config);
+        // DataUri
+        build.configure_data_uri(config);
     },
     ...options,
 };
