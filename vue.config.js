@@ -1,4 +1,5 @@
-const build = require('./modules/build');
+const build = require('@vue/modules');
+
 const options = {
     ...build.get_pages_configure(),
 };
