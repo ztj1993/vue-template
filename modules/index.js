@@ -97,10 +97,17 @@ function configure_definitions(config) {
     }]);
 }
 
+function get_vue_cli_options() {
+    return {
+        filenameHashing: (process.env.VUE_CLI_FILENAME_HASHING !== 'false'),
+    };
+}
+
 module.exports = {
     configure_single_html,
     get_pages_configure,
     get_proxy_configure,
+    get_vue_cli_options,
     configure_definitions,
     configure_single_js,
     configure_data_uri,
