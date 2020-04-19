@@ -4,14 +4,6 @@ const path = require('path');
 function configure_single_html(config, options) {
     if (process.env.SINGLE_HTML_ENABLE !== 'true') return {};
 
-    config.optimization.splitChunks(false);
-
-    config.module
-        .rule('images')
-        .use('url-loader')
-        .loader('url-loader')
-        .tap(options => Object.assign(options, {limit: 102400}));
-
     config.plugin('inline-source').use(require('html-webpack-inline-source-plugin'));
 
     if (options.pages) {
