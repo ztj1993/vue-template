@@ -39,15 +39,15 @@ function get_pages_configure() {
     let pages = {};
     let entries = [];
 
-    entries = glob.sync('src/**/entry.options.js');
+    entries.push(...glob.sync('src/**/entry.options.js'));
+    entries.push(...glob.sync('src/**/entry/options.js'));
     entries.forEach(function (entry) {
-        const page = path.join(process.env.INIT_CWD, entry);
-        pages = Object.assign(pages, require(page));
-    });
-
-    entries = glob.sync('src/**/entry/options.js');
-    entries.forEach(function (entry) {
-        const page = path.join(process.env.INIT_CWD, entry);
+        let page = null;
+        if (process.env.INIT_CWD) {
+            page = path.join(process.env.INIT_CWD, entry);
+        } else {
+            page = entry;
+        }
         pages = Object.assign(pages, require(page));
     });
 
