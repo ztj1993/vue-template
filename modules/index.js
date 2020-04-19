@@ -36,9 +36,16 @@ function configure_single_html(config, options) {
 function get_pages_configure() {
     if (process.env.PAGES_ENABLE !== 'true') return {};
 
-    const entries = glob.sync('src/**/page.options.js');
-
     let pages = {};
+    let entries = [];
+
+    entries = glob.sync('src/**/entry.options.js');
+    entries.forEach(function (entry) {
+        const page = path.join(process.env.INIT_CWD, entry);
+        pages = Object.assign(pages, require(page));
+    });
+
+    entries = glob.sync('src/**/entry/options.js');
     entries.forEach(function (entry) {
         const page = path.join(process.env.INIT_CWD, entry);
         pages = Object.assign(pages, require(page));
