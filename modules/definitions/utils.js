@@ -20,6 +20,16 @@ Utils.prototype.object_to_object = function (source, target) {
     });
 };
 
+/**
+ * 哈希表互换
+ */
+Utils.prototype.hash_map_flip = function (object) {
+    return Object.keys(object).reduce(function (acc, key) {
+        acc[object[key]] = key;
+        return acc;
+    }, {});
+};
+
 Utils.prototype.set_window_cache = function (name, value) {
     if (!window.cache) window.cache = {};
     window.cache[name] = value;
