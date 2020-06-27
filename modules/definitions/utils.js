@@ -7,6 +7,9 @@ Utils.prototype.error = window.console.error;
 
 Utils.prototype.warn = window.console.warn;
 
+/**
+ * 对象转换
+ */
 Utils.prototype.object_to_object = function (source, target) {
     if (!source) return;
     if (typeof (source) !== 'object') return;
@@ -30,11 +33,17 @@ Utils.prototype.hash_map_flip = function (object) {
     }, {});
 };
 
+/**
+ * 设置缓存
+ */
 Utils.prototype.set_window_cache = function (name, value) {
     if (!window.cache) window.cache = {};
     window.cache[name] = value;
 };
 
+/**
+ * 获取缓存
+ */
 Utils.prototype.get_window_cache = function (name) {
     if (!window.cache) return undefined;
     if (name in window.cache) {
