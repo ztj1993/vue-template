@@ -1,9 +1,10 @@
-# vue-template
-一个 VUE 脚手架项目。
+# vue framework && vue template && vue skeleton
+这是一个 VUE 框架。  
+这是一个 VUE 模板。  
+这是一个 VUE 脚手架。  
+这是一个通用的 VUE 基础骨架。
 
-如何开发出来一个别人看不懂的的项目，就是再说本项目。
-
-这个项目具有针对某些奇葩需求定制的一些功能。
+项目具有针对某些奇葩需求定制的一些功能。
 比如自动配置路由，多页面构建，将 css js images 打包到 html 中等。
 
 项目所有的功能，全部实现了自动化处理，同时采用由环境变量控制的功能开关。
@@ -19,25 +20,9 @@
 - [multiple router/多路由文件功能](./docs/usage/multiple-router.md)
 - [全局插件并配置 eslint](./docs/usage/global-plugin.md)
 
-## Project setup
+## 项目使用
 ```
 yarn install
-```
-
-### Compiles and hot-reloads for development
-```
 yarn serve
-```
-
-### Compiles and minifies for production
-```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
