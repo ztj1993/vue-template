@@ -1,16 +1,24 @@
 const glob = require('glob');
 const path = require('path');
 
-function configure_single_html(config, options) {
-    if (process.env.SINGLE_HTML_ENABLE !== 'true') return {};
+function configure_single_js(config) {
+    if (process.env.SINGLE_JS_ENABLE !== 'true') return {};
 
     config.optimization.splitChunks(false);
+}
+
+function configure_data_uri(config) {
+    if (process.env.DATA_URI_ENABLE !== 'true') return {};
 
     config.module
         .rule('images')
         .use('url-loader')
         .loader('url-loader')
         .tap(options => Object.assign(options, {limit: 102400}));
+}
+
+function configure_single_html(config, options) {
+    if (process.env.SINGLE_HTML_ENABLE !== 'true') return {};
 
     config.plugin('inline-source').use(require('html-webpack-inline-source-plugin'));
 
@@ -36,11 +44,18 @@ function configure_single_html(config, options) {
 function get_pages_configure() {
     if (process.env.PAGES_ENABLE !== 'true') return {};
 
-    const entries = glob.sync('src/**/page.options.js');
-
     let pages = {};
+    let entries = [];
+
+    entries.push(...glob.sync('src/**/entry.options.js'));
+    entries.push(...glob.sync('src/**/entry/options.js'));
     entries.forEach(function (entry) {
-        const page = path.join(process.env.INIT_CWD, entry);
+        let page = null;
+        if (process.env.INIT_CWD) {
+            page = path.join(process.env.INIT_CWD, entry);
+        } else {
+            page = entry;
+        }
         pages = Object.assign(pages, require(page));
     });
 
@@ -82,9 +97,18 @@ function configure_definitions(config) {
     }]);
 }
 
+function get_vue_cli_options() {
+    return {
+        filenameHashing: (process.env.VUE_CLI_FILENAME_HASHING !== 'false'),
+    };
+}
+
 module.exports = {
     configure_single_html,
     get_pages_configure,
     get_proxy_configure,
+    get_vue_cli_options,
     configure_definitions,
+    configure_single_js,
+    configure_data_uri,
 };
