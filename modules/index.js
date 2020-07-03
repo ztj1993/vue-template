@@ -89,7 +89,7 @@ function configure_definitions(config) {
 
     files.forEach(function (file) {
         const name = path.basename(file).replace('.definition.js', '');
-        options[name] = require.resolve('../' + file);
+        options[name] = path.join(process.env.INIT_CWD, file);
     });
 
     config.plugin().use(require.resolve('webpack/lib/ProvidePlugin'), [{
