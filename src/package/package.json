@@ -1,0 +1,9 @@
+{
+  "name": "@vue/src",
+  "version": "0.0.1",
+  "author": "ztj1993@gmail.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+  }
+}
