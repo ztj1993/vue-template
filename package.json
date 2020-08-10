@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@vue/modules": "ztj1993/vue-modules#v0.0.3",
-    "@vue/src": "file:./src/package"
+    "@vue/src": "file:./src"
   },
   "browserslist": [
     "> 1%",
