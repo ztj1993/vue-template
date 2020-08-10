@@ -1,24 +1,28 @@
-const build = require('@vue/modules');
+const Pages = require('@vue/modules/config/vue-config-pages');
+const Definitions = require('@vue/modules/config/vue-config-definitions');
+const DataUri = require('@vue/modules/config/vue-config-data-uri');
+const SingleJs = require('@vue/modules/config/vue-config-single-js');
+const SingleHtml = require('@vue/modules/config/vue-config-single-html');
+const Proxy = require('@vue/modules/config/vue-config-proxy');
 
 const options = {
-    ...build.get_vue_cli_options(),
-    ...build.get_pages_configure(),
+    ...Pages,
 };
 
 module.exports = {
     productionSourceMap: false,
     devServer: {
-        ...build.get_proxy_configure(),
+        ...Proxy,
     },
     chainWebpack: config => {
         // 全局定义配置
-        build.configure_definitions(config);
+        Definitions(config);
         // 单 HTML 内联样式和脚本配置
-        build.configure_single_html(config, options);
+        SingleHtml(config, options);
         // 单 JS 文件
-        build.configure_single_js(config);
+        SingleJs(config);
         // DataUri
-        build.configure_data_uri(config);
+        DataUri(config);
     },
     ...options,
 };
