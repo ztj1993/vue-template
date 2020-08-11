@@ -8,8 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "devDependencies": {
-    "@vue/modules": "ztj1993/vue-modules#v0.0.3",
-    "@vue/src": "file:./src"
+    "@vue/modules": "ztj1993/vue-modules#v0.0.3"
   },
   "browserslist": [
     "> 1%",

@@ -32,6 +32,10 @@ PROXY_PREFIX|string|-|代理前缀
 
 ## 项目使用
 ```
+将项目放在 src 下
+cp example src
+yarn add file:./src
+
 yarn install
 yarn serve
 yarn build

@@ -1,0 +1,17 @@
+version: "3"
+services:
+  vue-template:
+    image: node:12.18-alpine3.11
+    hostname: vue-template
+    container_name: vue-template
+    network_mode: custom
+    working_dir: /srv
+    tty: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /tmp/vue-template:/srv:rw
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.2020-ylm-iphone.loadbalancer.server.port=8080
+      - traefik.http.routers.2020-ylm-iphone.rule=Host(`vue-template.dev.000.ztj.xyz`)
+      - traefik.http.routers.2020-ylm-iphone.entrypoints=http
