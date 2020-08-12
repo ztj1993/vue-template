@@ -34,7 +34,8 @@ PROXY_PREFIX|string|-|代理前缀
 复制 example 到 src 下
 ```
 yarn install
-yarn add file:./src
+yarn add --dev ztj1993/vue-modules#v0.0.4
+yarn add --dev file:./src
 yarn serve
 yarn build
 ```
