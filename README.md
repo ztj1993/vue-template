@@ -31,8 +31,10 @@ PROXY_TARGET|string|-|代理来源
 PROXY_PREFIX|string|-|代理前缀
 
 ## 项目使用
+复制 example 到 src 下
 ```
 yarn install
+yarn add file:./src
 yarn serve
 yarn build
 ```
