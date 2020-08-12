@@ -6,13 +6,13 @@ const SingleHtml = require('@vue/modules/config/vue-config-single-html');
 const Proxy = require('@vue/modules/config/vue-config-proxy');
 
 const options = {
-    ...Pages,
+    ...Pages(),
 };
 
 module.exports = {
     productionSourceMap: false,
     devServer: {
-        ...Proxy,
+        ...Proxy(),
     },
     chainWebpack: config => {
         // 全局定义配置
