@@ -12,6 +12,7 @@ const options = {
 module.exports = {
     productionSourceMap: false,
     devServer: {
+        disableHostCheck: true,
         ...Proxy(),
     },
     chainWebpack: config => {
